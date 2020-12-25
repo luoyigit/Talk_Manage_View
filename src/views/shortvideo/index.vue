@@ -2,28 +2,16 @@
     <div class="staff-manage" >
         <layout-search-bar @search="search" :condition-string="conditionString">
             <el-button slot="right" type="primary" icon="el-icon-circle-plus-outline" @click="addService" >添加视频</el-button>
-            <pms-condition-search slot="right" search-code="videolist" @search="search"  @addQuickCondition="addQuickCondition"></pms-condition-search>
+            <!-- <pms-condition-search slot="right" search-code="videolist" @search="search"  @addQuickCondition="addQuickCondition"></pms-condition-search> -->
         </layout-search-bar>
         
         <el-card v-loading="loading" :element-loading-text="loadingText" :element-loading-spinner="loadingSpinner">
             <v-el-table :data="userList" :columns="columns">
-                 <span slot="gender" slot-scope="scope">{{ scope.row.gender === 1 ? '男' : '女' }}</span>
-                <el-tag slot="isEnable" slot-scope="scope" :type="scope.row.isEnable === true ? 'success' : 'warning'">
-                    {{ scope.row.isEnable == true ? '可用' : '禁用' }}
-                </el-tag>
-                <template slot-scope="scope" slot="totalSeconds">
-                 <span >{{scope.row.video.totalSeconds}}</span>
-                </template>
-                <template slot-scope="scope" slot="frameSize">
-                    <span >{{scope.row.video.frameSize}}</span>
-                </template>
-                <template slot-scope="scope" slot="length">
-                    <span >{{scope.row.video.length}}</span>
-                </template>
                 <template slot="action" slot-scope="scope">
                       <el-button circle type="primary" icon="el-icon-edit" title="编辑" @click="edit(scope.row)"> </el-button>
+                        <el-button circle type="danger" icon="el-icon-delete" title="删除" @click="deleteFile(scope.row)"> </el-button>
                          <!-- <el-button circle type="info" icon="el-icon-medal" title="设置技能" @click="edit(scope.row)"> </el-button> -->
-                    <el-dropdown @command="handleCommand($event, scope.row)" trigger="hover" >
+                    <!-- <el-dropdown @command="handleCommand($event, scope.row)" trigger="hover" >
                         <el-button title="更多操作" circle type="success" icon="el-icon-more"> </el-button>
                         <el-dropdown-menu slot="dropdown" class="btn-dropdown">
                             <el-dropdown-item
@@ -39,7 +27,7 @@
                                 禁用
                             </el-dropdown-item>
                         </el-dropdown-menu>
-                    </el-dropdown>
+                    </el-dropdown> -->
                 </template>
             </v-el-table>
             <v-el-pagination :total="totalCount" :page-size="pageSize" :current-page="pageIndex" @current-change="pageChange"> </v-el-pagination>
@@ -65,28 +53,23 @@ export default {
                     attrs: { width: '40' },
                 },
                 {
-                    label: '标题',
-                    prop: 'title',
+                    label: '原名',
+                    prop: 'sourceName',
                 },
                 {
-                    label: '类别',
-                    prop: 'categoryName',
-                },
-                {
-                    label: '发布人',
-                    prop: 'userNickName',
-                },
-                {
-                    label: '添加时间',
-                    prop: 'addTime',
+                    label: '系统名',
+                    prop: 'fileName',
+                    attrs:{
+                        width: "250"
+                    }
                 },
                 {
                     label: '视频时长(秒)',
                     prop: 'totalSeconds',
                 },
                  {
-                    label: '分辨率',
-                    prop: 'frameSize',
+                    label: '备注',
+                    prop: 'remark',
                 },
                 {
                     label: '文件大小(M)',
@@ -94,7 +77,7 @@ export default {
                 },
                  {
                     label: '发布时间',
-                    prop: 'releaseTime',
+                    prop: 'createTime',
                 },
                 {
                     label: '操作',
@@ -121,6 +104,11 @@ export default {
             }
             this.setQuickObject(option);
             this.getList(option)
+        },
+        deleteFile(row){
+           serviceApi.deleteVideo(row.id).then((res) => {
+              this.search()
+           })
         },
         getList(prop) {
             let option = {

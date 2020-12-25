@@ -77,11 +77,12 @@ class Http {
         this.admin = "z" //后台管理系统的路由前缀
         this.log = "l" //日志服务
         this.user = "u"  // 用户服务
-        this.file = "f0" //文件服务
+        this.file = "http://localhost:15005" //文件服务
         this.goods = "g0" //商品服务
         this.project = "p" //项目服务
         this.permission = "qx" //权限服务
-        this.singleUploadUrl = `${host}/${this.file}/BufferedSingleFileUploadPhysical`
+        // this.singleUploadUrl = `${host}/${this.file}/BufferedSingleFileUploadPhysical`
+        this.singleUploadUrl = 'http://localhost:15005/BufferedSingleFileUploadPhysical'
         this.multiUploadUrl = `${host}/${this.file}/BufferedMultipleFileUploadPhysical`
         this.downfileurl = `${host}/${this.file}/mzfile`
         this.StaticFilesUrl = `${host}/mzfiles`

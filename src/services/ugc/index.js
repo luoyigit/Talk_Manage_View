@@ -7,6 +7,7 @@ import videoDetail from './videoDetail'
 import videoLogo from './videoLogo'
 import getManyThumbnail from './getManyThumbnail'
 import getM3u8 from './getM3u8'
+import deleteVideo from './deleteVideo'
 export default {
     getVideoList,
     addVideo,
@@ -16,5 +17,6 @@ export default {
     videoDetail,
     videoLogo,
     getManyThumbnail,
-    getM3u8
+    getM3u8,
+    deleteVideo
 }

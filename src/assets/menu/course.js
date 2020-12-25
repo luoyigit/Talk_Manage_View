@@ -16,7 +16,12 @@ export default [
     //   },
     {
         name: '作品类别管理',
-        path: '/coursetype/index',
+        path: '/course/type/list',
+        icon: 'el-icon-s-home',
+      },
+      {
+        name: '作品目录管理',
+        path: '/course/ml/list',
         icon: 'el-icon-s-home',
       },
   ]

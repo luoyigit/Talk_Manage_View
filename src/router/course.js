@@ -34,6 +34,11 @@ export default [
             },
         ]
       },
+      {
+        path: '/course/type/list',
+        name: '作品类别',
+        component: () => import('@/views/course/coursetype/index.vue'),
+      },
 
     ],
   },
