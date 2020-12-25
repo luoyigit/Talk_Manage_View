@@ -71,6 +71,7 @@ import user from '@/assets/menu/user.js'
 import HeadBar from './head-bar'
 import Crumb from './crumb'
 import home from '@/assets/menu/home.js'
+import course from '@/assets/menu/course.js'
 export default {
   data() {
     return {
@@ -132,6 +133,11 @@ export default {
            name: '服务治理',
           path: '/service',
           menu: service,
+        },
+        {
+           name: '教学系统',
+          path: '/course',
+          menu: course,
         },
         {
           name: '基础设施',

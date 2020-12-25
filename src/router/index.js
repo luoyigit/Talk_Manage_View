@@ -15,6 +15,7 @@ import Layout from '@/layout'
 import User from './user'
 import Home2 from './home'
 import home from '../assets/menu/home'
+import course from './course'
 Vue.use(VueRouter)
 
 const routes = [
@@ -44,6 +45,7 @@ const routes = [
   .concat(Service)
   .concat(User)
   .concat(Home2)
+  .concat(course)
 
 const router = new VueRouter({
   mode: 'hash',

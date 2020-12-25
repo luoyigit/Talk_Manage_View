@@ -1,10 +1,9 @@
 import http from 'utils/http'
-export default function({data, loading}) {
+
+export default function() {
     return new Promise((resolve, reject) => {
         let option = {
-            url: '/user/FindList',
-            data,
-            loading
+            url: '/Project/FindProjectList'
         }
         http.get(option).then(data => {
             resolve(data)

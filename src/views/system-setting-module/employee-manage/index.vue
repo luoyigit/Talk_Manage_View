@@ -1,9 +1,9 @@
 <template>
     <div class="staff-manage">
-        <layout-search-bar @search="search" :condition-string="conditionString">
+        <!-- <layout-search-bar @search="search" :condition-string="conditionString">
             <el-button slot="right" type="primary" icon="el-icon-circle-plus-outline" @click="addStaff" >添加员工</el-button>
             <pms-condition-search slot="right" search-code="userlist" @search="search" @setRight="setRight" @addQuickCondition="addQuickCondition"></pms-condition-search>
-        </layout-search-bar>
+        </layout-search-bar> -->
         
         <el-card v-loading="loading" :element-loading-text="loadingText" :element-loading-spinner="loadingSpinner">
             <v-el-table :data="staffList" :columns="columns">
@@ -111,30 +111,30 @@ export default {
                     type: 'index',
                     // attrs: { width: '40' },
                 },
-                {
-                    label: '用户名',
-                    prop: 'userName',
-                },
+                // {
+                //     label: '用户名',
+                //     prop: 'userName',
+                // },
                 {
                     label: '姓名',
-                    prop: 'realName',
+                    prop: 'name',
                 },
-                {
-                    label: '手机号',
-                    prop: 'phone',
-                },
+                // {
+                //     label: '手机号',
+                //     prop: 'phone',
+                // },
                 // {
                 //     label: '性别',
                 //     prop: 'sex'
                 // },
-                {
-                    label: '状态',
-                    prop: 'status',
-                },
-                {
-                    label: '系统角色',
-                    prop: 'roleName'
-                },
+                // {
+                //     label: '状态',
+                //     prop: 'status',
+                // },
+                // {
+                //     label: '系统角色',
+                //     prop: 'roleName'
+                // },
                 {
                     label: '操作',
                     prop: 'action',

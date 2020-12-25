@@ -85,9 +85,9 @@ export default {
   },
   components: {},
    created() {
-       processService.getBackLogCount().then((res) => {
-          this.auditCount = Number(res)
-       })
+      //  processService.getBackLogCount().then((res) => {
+      //     this.auditCount = Number(res)
+      //  })
       
     }
 }

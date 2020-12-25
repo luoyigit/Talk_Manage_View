@@ -19,7 +19,7 @@ export default {
     if (!this.userName) {
       this.$router.push({ name: '登录' })
     } else {
-      this.$router.push({ name: '会员系统' })
+      this.$router.push({ name: '基础设施' })
     }
   },
 }
