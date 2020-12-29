@@ -71,6 +71,11 @@ export default {
             ]
         }
     },
+       watch: {
+            '$route'() {
+                this.getList();//我的初始化方法
+            }
+        },
     methods: {
         setRight(str) {
             this.conditionString = str
@@ -111,8 +116,8 @@ export default {
        addProject(){
              this.$router.push('/course/index/add')
        },
-       editProject(){
-             this.$router.push('/course/index/edit')
+       editProject(row){
+             this.$router.push('/course/index/add?id='+row.id)
        },
         // 删除人员
         removeStaff(row) {
